@@ -1,0 +1,28 @@
+{
+  "name": "i321-mohamedfarah",
+  "version": "1.0.0",
+  "description": "Module I321 - Programmer des systèmes distribués",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CPNV-KMI-I321/I321-MohamedFarah.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CPNV-KMI-I321/I321-MohamedFarah/issues"
+  },
+  "homepage": "https://github.com/CPNV-KMI-I321/I321-MohamedFarah#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
+}
