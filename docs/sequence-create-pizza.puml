@@ -1,0 +1,32 @@
+@startuml
+title Création d'une pizza - POST /api/pizzas
+
+actor "Pizzaïolo\n(Client)" as Client
+participant "Global Router\n(app.js)" as App
+participant "Pizza Router\n(pizzaRoutes.js)" as Router
+participant "Controller\n(pizzaController.js)" as Controller
+participant "Entity\n(Pizza)" as Entity
+database "Base de données" as DB
+
+== Flux de création ==
+
+Client -> App : POST /api/pizzas\n{ title, image, ingredients, price }
+App -> Router : délègue aux routes /api/pizzas
+Router -> Controller : createPizza(req, res)
+Controller -> Entity : Pizza.create({ title, image, ingredients, price })
+
+alt Données invalides
+    Entity --> Controller : erreur de validation
+    Controller --> Client : 400 Bad Request + messages d'erreur
+else Succès
+    Entity -> DB : INSERT INTO pizzas (title, image, price)
+    DB --> Entity : ligne insérée (id = 3)
+    Entity --> Controller : pizza créée
+    Controller --> Client : 201 Created + JSON de la pizza (avec id)
+end
+
+== Erreur inattendue ==
+
+Controller --> Client : 500 Internal Server Error
+
+@enduml
